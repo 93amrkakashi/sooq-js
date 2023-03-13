@@ -1,10 +1,10 @@
 const productsDiv = document.querySelector(".products-container");
-
+console.log(products)
 const fetchData = () => {
   fetch("https://fakestoreapi.com/products?limit=50")
     .then((res) => res.json())
-    .then((data) => {
-      data.forEach((product) => {
+    .then((products) => {
+      products.forEach((product) => {
         const card = `
             <div class="card">
                 <div class="img">
@@ -15,7 +15,7 @@ const fetchData = () => {
                   <p>Price: ${product.price}$</p>
                 </div>
                 <div class="actions">
-                  <button>ADD</button>
+                  <button id="${product.id}" class="add p${product.id}" onclick="addToCart(${product.id})" >ADD</button>
                   <button>VIEW</button>
                 </div>
             </div>
@@ -25,3 +25,39 @@ const fetchData = () => {
     });
 };
 fetchData();
+
+// cart array
+let cart = JSON.parse(localStorage.getItem("CART")) || [];
+updateCart();
+
+// ADD TO CART
+function addToCart(id) {
+  const addBtn = document.querySelector(`.p${id}`)
+  console.log(addBtn)
+  // check if prodcut already exist in cart
+  console.log(productsDiv)
+  if (cart.some((item) => item.id === id)) {
+    // changeNumberOfUnits("plus", id);
+    // console.log(document.querySelector(".img"))
+    console.log("here")
+  } else {
+    const item = products.find((product) => product.id === id);
+    
+    cart.push({
+      ...item,
+    });
+    addBtn.classList.toggle("hide")
+    // addBtn.find(btn => btn.)
+  }
+
+  updateCart();
+}
+
+
+function updateCart() {
+  // renderCartItems();
+  // renderSubtotal();
+
+  // save cart to local storage
+  localStorage.setItem("CART", JSON.stringify(cart));
+}
