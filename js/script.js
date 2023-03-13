@@ -16,6 +16,7 @@ const fetchData = () => {
                 </div>
                 <div class="actions">
                   <button id="${product.id}" class="add p${product.id}" onclick="addToCart(${product.id})" >ADD</button>
+                  <button id="${product.id}" class="hide r${product.id}" >delete</button>
                   <button>VIEW</button>
                 </div>
             </div>
@@ -32,21 +33,28 @@ updateCart();
 
 // ADD TO CART
 function addToCart(id) {
+  let amount = 0
   const addBtn = document.querySelector(`.p${id}`)
+  const removeBtn = document.querySelector(`.r${id}`)
   console.log(addBtn)
   // check if prodcut already exist in cart
   console.log(productsDiv)
   if (cart.some((item) => item.id === id)) {
     // changeNumberOfUnits("plus", id);
     // console.log(document.querySelector(".img"))
-    console.log("here")
+    amount+=1
+    console.log(amount)
+    
   } else {
     const item = products.find((product) => product.id === id);
     
     cart.push({
       ...item,
+      amount: amount+1
     });
+    // addBtn.innerHTML = "increase"
     addBtn.classList.toggle("hide")
+    removeBtn.classList.toggle("hide")
     // addBtn.find(btn => btn.)
   }
 
