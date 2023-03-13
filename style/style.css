@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* .......... general settings ............. */
+:root {
+  --text-color: #4299e1;
+  --text-color2: #ffffff;
+  --light-bg1: #a0aec0;
+  --light-bg2: #e2e8f0;
+  --dark-bg1: #171923;
+  --dark-bg2: #2d3748;
+  --btn-color: #2A4467;
+  --btn-hover: #1b2c42;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.5s ease 0s;
+color: var(--text-color2);
+}
+
+body {
+  max-width: 100vw;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--dark-bg2);
+}
+
+.light {
+  background-color: var(--light-bg2);
+  border: 1px solid var(--light-bg1);
+  color: var(--dark-bg1);
+}
+
+
+/* .......... navbar styles ............. */
+
+.navbar {
+  display: flex;
+  padding: 5px 12px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 94%;
+  margin: 5px auto;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 3%;
+  z-index: 99999999;
+  background-color: var(--dark-bg1);
+}
+
+.light .navbar {
+  background-color: var(--light-bg1);
+}
+
+.navbar .cart {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+}
+
+.navbar .cart i {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.navbar .cart span {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: var(--text-color2);
+  width: 20px;
+  color: var(--dark-bg1);
+  border: 2px solid var(--dark-bg1);
+  height: 20px;
+  border-radius: 50%;
+  line-height: 1;
+  text-align: center;
+}
+
+.cart-items {
+  position: absolute;
+  right: 0px;
+  top: 65px;
+  color: var(--text-color2);
+  max-width: 400px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: var(--dark-bg1);
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 99;
+}
+
+.cart-items .card {
+  width: 150px;
+  height: 160px;
+  border: 1px solid var(--light-bg2);
+}
+
+.light .cart-items {
+  background-color: var(--light-bg1);
+  color: var(--dark-bg1);
+}
+
+/* .......... main content styles ............. */
+
+.products-container {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 80px;
+}
+
+.card {
+  text-align: center;
+  border: 1px solid var(--light-bg2);
+  border-radius: 5px;
+  width: 300px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  margin: 8px auto;
+}
+
+.light .card {
+  border-color: var(--dark-bg1);
+}
+
+.img {
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+img:hover {
+  transform: rotate(10deg) scale(1.4);
+}
+
+
+
+button {
+  border: none;
+  outline: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  background-color: var(--btn-color);
+  color: var(--dark-bg1);
+  border-radius: 8px;
+  margin: 8px 3px;
+  width: 90px;
+  color: var(--text-color2);
+  font-weight: 600;
+}
+
+/* .light button {
+  color: var(--dark-bg1);
+} */
+
+button:hover {
+  background-color: var(--btn-hover);
+}
+
+.hide {
+  display: none;
+}
+
+
+.main {
+  position: relative;
+}
+
+.overlay {
+  min-height: 100vh;
+  min-width: 100%;
+  background-color: #000000d0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99999999;
+}
+
+.modal {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  width: 450px;
+  height: 400px;
+  transform: translate(-50%);
+  background-color: var(--dark-bg1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.light .modal {
+  background-color: var(--light-bg1);
+}
+
+.x {
+  position: absolute;
+  top: -25px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.theme {
+  z-index: 999999;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .cart-items {
+    width: 350px;
+  }
+
+  .logo h2 {
+    font-size: 18px;
+  }
+
+  .navbar .cart i {
+    font-size: 35px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cart-items {
+    width: 220px;
+  }
+}
